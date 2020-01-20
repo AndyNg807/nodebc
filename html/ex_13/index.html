@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Create User</title>
+    </head>
+    <body>
+        <h1>Create User</h1>
+        <hr>
+        <form action="#" method="GET" enctype="multipart/form-data">
+            <label for="name">name</label>
+            <input id="name" name="name" placeholder="name" size="30" maxlength="12"/>
+            <label for="opt">Options :</label>
+            <select id="opt" name="moive">
+                <option value="deadpool">Deadpool</option>
+                <option value="batman_vs_superman">Batman v Superman</option>
+                <option value="civil_war">Civil War</option>
+                <option value="doctor_strange">Doctor Strange</option>
+                <option value="suicide_squad">Suicide Squad</option>
+                <option value="apocalypse">X-Men: Apocalypse</option>
+                <option value="gotg_vol2">Guardians of the Galaxy Vol 2</option>
+                <option value="justice_league">Justice League</option>
+                <option value="logan">Logan</option>
+                <option value="homecoming">Spider-Man: Homecoming</option>
+                <option value="wonder_woman" selected>Wonder Woman</option>
+                <option value="thor_ragnarok">Thor: Ragnarok</option>
+                <option value="black_panther">Black Panther</option>
+            </select>
+            <label for=bio>bio</label>
+            <textarea name="bio" rows="3" cols="30" id="bio"></textarea>
+            <label for="avatar">upload a avatar image :</label>
+            <input type="file" id="avatar" name="avatar" accept=".jpg, .png"/>
+            <input type="reset" value="Clear Form"/>
+            <input type="submit" value="Add new user"> 
+        </form> 
+    </body>
+</html>
