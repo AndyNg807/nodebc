@@ -1,0 +1,10 @@
+var FirstName;
+var LastName;
+var Age;
+var Address;
+var DateOfBirth;
+FirstName = "Andy";
+LastName = "Ng";
+Age = 20;
+Address = "Granville";
+DateOfBirth = "01/01/2000";
