@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Events</title>
+    <script>
+        // Select the firstButton id element using querySelector method
+        // When the user clicks this button will see an alert message with the following message:
+        // You clicked an event listened element
+        // Use addEventListener to add this functionality
+        // Add other event listener to this button reading the doc and using your imagination!
+        window.onload = function(){
+            const btn = document.querySelector('button');
+            btn.addEventListener('click', function(){
+                alert('You clicked an event listened element');
+            });
+            const btn2 = document.querySelectorAll('button');
+            btn2[btn2.length-1].addEventListener('click', function(){
+                let herf = document.querySelector('[href]');
+                //herf.setAttribute('herf',"https://yahoo.com");
+                herf.href = "https://yahoo.com";
+            });
+
+        }
+
+    </script>
+  </head>
+  <body>
+    <button id="firstButton">Click Me!!</button>
+    <button id="secondButton">Remove event listener</button>
+    <a href="https://google.com">Link with JavaScript handler</a>
+  </body>
+</html>

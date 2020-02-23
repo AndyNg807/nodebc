@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Form elements event</title>
+  <style>
+    .error { 
+      color: red; 
+      background-color: pink;
+      border: 1px solid red;
+      padding: 5px;
+    }
+  </style>
+  <script>
+// Give all elements a placeholder attribute with the corresponding value (username and email)
+// Add one more validation to make sure that username and password only contains numbers and letters (alphanumeric)
+// Validate that the email is correct using an email regex
+// Show an error message if the username, password and email values are not valid
+      window.onload = function(){
+        forms = document.querySelector('form');
+        
+        const validateUser = function(username) {
+        const regex = /^[a-zA-Z0-9_\.\-]+$/i;
+        return regex.test(username);
+        }
+
+        const validatePass = function(password) {
+        const regex = /^[a-zA-Z0-9_\.\-]+$/i;
+        return regex.test(password);
+        }
+
+        const validateEmail = function(email) {
+        const emailRegex = /^[\w\.\-]+@[a-zA-Z0-9\.]+\.[a-zA-Z]{2,6}$/;
+        return emailRegex.test(email);
+        }
+        
+        
+        forms.onsubmit = function(event){
+            //event.preventDefault();
+            let username = document.querySelector('form>input[name=username]');
+            //console.log(username.value);
+            let pass = document.querySelector('form>input[name=pass]');
+            //console.log(pass.value);
+            let email = document.querySelector('form>input[name=email]');
+            //console.log(email.value);
+            let errorMsg = function(){
+                document.getElementById('errors').innerHTML = 'Please input a valid username, password and email';
+            }
+
+            if(!validateUser(username.value)){
+                console.log(validateUser(username.value));
+                errorMsg();
+                return false;
+            }
+
+            if(!validatePass(pass.value)){
+                console.log(validatePass(pass.value));
+                errorMsg();
+                return false;
+            }
+
+            if(!validateEmail(email.value)){
+                console.log(validateEmail(email.value));
+                errorMsg();
+                return false;
+            }
+
+            return true; 
+
+        }
+
+
+      }  
+</script>
+</head>
+<body>
+  <form action="save_user.html" method="post" enctype="application/x-www-form-urlencoded" name="login">
+    <input type="text" id="username" name="username" />
+    <input type="password" id="pass" name="pass" />
+    <input type="text" id="email" name="email" />
+    <input type="submit" name="submit" value="Send" />
+  </form>
+  <div id="errors"></div>
+</body>
+</html>

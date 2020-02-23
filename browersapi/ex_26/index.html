@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>It's all JavaScript Baby!!</title>
+    <script>
+    //         Select the body element
+    // Create a name array and add 10 names as items
+    // Create a ul element
+    // Iterate the name array and execute the following task for each item:
+    // Create an li element
+    // Set the name value as li element content
+    // Insert the li element into the ul element
+    // Finally insert the ul element into the body
+        window.onload = function(){
+            mainBody = document.querySelector('body');
+            names = ['andy', 'benny', 'chole', 'dora', 'eva', 'frank', 'george', 'henny', 'iris', 'judy'];
+            ulist = document.createElement('ul');
+            listItem = document.createElement('li');
+           
+            
+            for (let i=0; i<names.length; i++){
+               listItem.innerHTML = names[i];
+                ulist.appendChild(listItem.cloneNode(true)); 
+               
+            }
+            
+            mainBody.appendChild(ulist);
+        }
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

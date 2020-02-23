@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Form elements event</title>
+  <style>
+    .error { 
+      color: red; 
+      background-color: pink;
+      border: 1px solid red;
+      padding: 5px;
+    }
+  </style>
+  <script>
+// Select the form element using any of the JavaScript selectors
+// Add a form submit handler and prevent the default form behaviour
+// When the user submits the form validate that the username and password are not empty
+// If the fields are empty then add the error class to the error's id element
+// Also add the following messages:
+// Please input a username and password
+// If everything is ok then make sure that you don't show the error message
+// Then allow the form to be submitted
+      window.onload = function(){
+        forms = document.querySelector('form');
+        forms.onsubmit = function(event){
+            //event.preventDefault();
+            let username = document.querySelector('form>input[name=username]')
+            console.log(username.value);
+            let pass = document.querySelector('form>input[name=pass]')
+            console.log(pass.value);
+            if (username.value.length === 0 || pass.value.length === 0){
+                if(username.value.length === 0){
+                    document.getElementById(username.id).setAttribute('class','error');
+                }
+                if(pass.value.length === 0){
+                    document.getElementById(pass.id).setAttribute('class','error');
+                }
+                document.getElementById('errors').innerHTML = 'Please input a username and password';
+                
+                return false;
+            }else{
+                return true; 
+            }
+
+        }
+
+
+      }  
+</script>
+</head>
+<body>
+  <form action="save_user.html" method="post" enctype="application/x-www-form-urlencoded" name="login">
+    <input type="text" id="username" name="username" />
+    <input type="password" id="pass" name="pass" />
+    <input type="submit" name="submit" value="Send" />
+  </form>
+  <div id="errors"></div>
+</body>
+</html>

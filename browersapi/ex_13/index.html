@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script async>
+            let time = 0;
+            let stayIn = prompt(`how many second your would like to stay?`,"30");
+            
+            function count(){
+                time += 1;
+                console.log(`you have ${stayIn - time} left`);
+                document.getElementById("stay").innerHTML = `you have ${stayIn - time} left`;
+                if(time == stayIn){
+                    clearInterval(nInterval);
+                    console.log("Your session has expired, come again soon!");
+                    document.getElementById("stay").innerHTML = `Your session has expired, come again soon!`;
+                }
+                
+            }
+            window.onload = function(){
+                nInterval = setInterval(count, 1000);
+            }
+
+            
+            
+            
+        </script>
+    </head>
+    <p id="stay"></p>
+</html>

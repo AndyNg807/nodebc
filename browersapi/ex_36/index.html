@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Events</title>
+    <script>
+        // Create a basic HTML document
+        // Create a script tag on the document head element
+        // Copy and paste the all the code (html and js) from exercise 35
+        // Select the html element using querySelector method
+        // Add a click event handler to the html element using addEventListener
+        // When the user clicks on any position we need to show the folloing console message
+        // Click possition: x-axis: %xposition%, y-axis: %yposition%
+        // Use the event x and y properties to get the coordinates and show the message
+        
+        window.onload = function(){
+            const btn = document.querySelector('button');
+            const greeting = function(){alert('You clicked an event listened element');};
+            btn.addEventListener('click', greeting);
+            const secondBtn = document.getElementById('secondButton');
+            secondBtn.onclick = function(){
+                btn.removeEventListener('click', greeting);
+            };
+            const link = document.querySelector('a');
+            link.addEventListener('click', function(event){
+                event.preventDefault();
+                alert(`This link doesn't send us to a differen page as we're preventing the default behaviour`);
+                
+            } );
+            const html = document.querySelector('html');
+            html.addEventListener('click', function(event){
+                let xposition = event.clientX;
+                let yposition = event.clientY;
+                console.log(`Click possition: x-axis: ${xposition}, y-axis: ${yposition}`);
+            });
+        }
+
+    </script>
+  </head>
+  <body>
+    <button id="firstButton">Click Me!!</button>
+    <button id="secondButton">Remove event listener</button>
+    <a href="https://google.com">Link with JavaScript handler</a>
+    <a href="https://yahoo.com">Link to Yahoo</a>
+  </body>
+</html>

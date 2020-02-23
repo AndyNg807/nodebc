@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Events</title>
+    <script>
+        
+        window.onload = function(){
+            const btn = document.querySelector('button');
+            const greeting = function(){alert('You clicked an event listened element');};
+            btn.addEventListener('click', greeting);
+            const secondBtn = document.getElementById('secondButton');
+            secondBtn.onclick = function(){
+                btn.removeEventListener('click', greeting);
+            };
+            const link = document.querySelector('a');
+            link.addEventListener('click', function(event){
+                event.preventDefault();
+                alert(`This link doesn't send us to a differen page as we're preventing the default behaviour`);
+                //link.href = "#";
+                //link.removeAttribute('href');
+            } );
+        }
+
+    </script>
+  </head>
+  <body>
+    <button id="firstButton">Click Me!!</button>
+    <button id="secondButton">Remove event listener</button>
+    <a href="https://google.com">Link with JavaScript handler</a>
+    <a href="https://yahoo.com">Link to Yahoo</a>
+  </body>
+</html>

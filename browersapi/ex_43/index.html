@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Form Properties</title>
+  <script>
+    //   Create a basic HTML document
+    //     Create a script tag on the document head element
+    //     Select the form element using any of the JavaScript selectors
+    //     Crete a variable for each form property
+    //     Example define a action variable and assign the form action property
+    //     Show each form property value as div content
+    window.onload = function(){ 
+    const forms = document.querySelector('form');
+      let faction = forms.action;
+      let fmethod = forms.method;
+      let fenctype = forms.enctype;
+      let fname = forms.name;
+      const div = document.querySelector('div');
+      const p = document.createElement('p');
+    //   for (let i=0; i<forms.attributes.length; i++){
+    //       p.innerHTML = `${forms.attributes[i].name} : ${forms.attributes[i].value}`
+    //       div.appendChild(p.cloneNode(true));
+    //   }
+        p.innerHTML = faction;
+        div.appendChild(p.cloneNode(true));
+        p.innerHTML = fmethod;
+        div.appendChild(p.cloneNode(true));
+        p.innerHTML = fenctype;
+        div.appendChild(p.cloneNode(true));
+        p.innerHTML = fname;
+        div.appendChild(p.cloneNode(true));
+
+    }
+      
+
+
+  </script>
+</head>
+<body>
+  <form action="save_user.html" method="post" enctype="application/x-www-form-urlencoded" name="login">
+    <input type="text" id="username" name="username" />
+    <input type="password" id="pass" name="pass" />
+    <input type="submit" name="submit" value="Send" />
+  </form>
+  <div></div>
+</body>
+</html>

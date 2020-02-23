@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Elements</title>
+  <style>
+    .red {
+      color: red;
+    }
+    
+    .green {
+      color: green;
+    }
+    
+    .orange {
+      color: orange;
+    }
+  </style>
+  <script>
+      //Select the first list item element and add the orange class
+        //Using the selected element select the following element using nextElementSibling and add the orange class
+        //Keep doing this until there's no more siblings
+        //At the end all elements must have the orange class
+        //Once you acomplish this task:
+        //Now we need to go back using previousElementSibling
+        //Add red class to Item 3
+        //Add green class to Item 1
+        window.onload = function(){
+            let elementLi = document.querySelectorAll('li');
+            elementLi[0].classList.add('orange');
+            for (let i = 0; i<elementLi.length-1; i++){
+              elementLi[i].nextElementSibling.classList.add('orange');
+            }
+            elementLi[3].previousElementSibling.removeAttribute('class');
+            elementLi[3].previousElementSibling.classList.add('red');
+            elementLi[1].previousElementSibling.classList.replace('orange', 'green');
+        }
+  </script>
+</head>
+<body>
+  <ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+    <li>Item 4</li>
+    <li>Item 5</li>
+  </ul>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>exercise 52</title>
+  <script>
+
+      
+        /*
+        fetch(apiURL)             //fetch接收url作參數, 並用"then"來接收這請次求的相關資料
+        .then(response => {      // response 是個 Response 物件(這請次求的相關資料)
+        return response.json()  //必須將它轉為 blob, formData, json .. (e.g 如要text則為"response.text)等格式
+        })                      //return 出來的資料會給下一個"then"接收
+        
+        **********************
+        fetch('https://httpbin.org/post', {
+        method: 'POST',             //傳送方式, 預設為"get"
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
+        },
+        body: JSON.stringify(        //未使用 JSON.stringify 的請求會直接將物件強制轉為字串，
+        {                           //變成 [object Object] 送至 server ，
+            name: 'GQSM',           //使用了正確轉換的請求在 server 端則是能接收到正確的內容。
+            age: 25                 //(e.g. {"name":"GQSM","age":"25"}) 
+        }                           //或
+        )                           //body:encodeURI(JSON.stringify({name:'GQSM',age'25'})),
+        }).then((response) => {     //如果是傳遞「中文」可能會出現亂碼，這時可以使用encodeURI來做轉碼
+        return response.json()
+
+          -------------------------------------------
+          Fetch 常用的的 Request 屬性 (傳給 url 的附帶資料)
+          url         : 第一個參數，一定要填的項目，代表需要 fetch 對象的網址
+          method      : GET(預設)、POST、PUT、DELETE、HEAD
+                        head：和get一樣，只是head只會取的HTTP header的資料。
+                        get：取得我們想要的資料。
+                        post：新增一項資料。（如果存在會新增一個新的）
+                        put：新增一項資料，如果存在就覆蓋過去。（還是只有一筆資料）。
+                        patch：附加新的資料在已經存在的資料後面。（資料必須已經存在，patch會擴充這項資料）
+                        delete：刪除資料
+          headers     : 要求相關的 Headers 物件 ( 預設 {} )
+          mode        : cors(跨域資源共享-預設)、no-cors、same-origin、navigate
+                        cors支持三種content-type (application/x-www-form-urlencoded,
+                        multipart/form-data 和 text/plain), 但不支持application/json?(待測試)
+          referrer    : no-referrer、client(預設) 或某個網址
+          credentials : omit(忽略)、same-origin(預設)、include
+          redirect    : follow、error、manual(預設)
+          cache       : default(預設)、no-store、reload、no-cache、force-cache
+          body        : 要加到要求中的內容 ( 如果 method 為 GET 或 HEAD 則不設定 )
+
+          --------------------------------------------
+          Fetch 常用的 Response 屬性 (接收回來的資料)
+          headers     : 包含與 response 相關的 Headers 物件
+          ok          : 成功回傳 true，不成功回傳 false
+          status      : 狀態代碼，成功為 200
+          statusText  : 狀態文字，成功為 ok
+          type        : response 的類型，例如 basic、cors...等
+          url         : response 的 url
+
+          --------------------------------------------
+          Fetch 常用的 Response 方法 (設定回收回來的資料種類)
+          json()      : 返回 Promise，resolves 是 JSON 物件
+          text()      : 返回 Promise，resolves 是 text string
+          blob()      : 返回 Promise，resolves 是 blob ( 非結構化物件資料，例如文字或二進位資料 )
+          arrayBuffer() : 返回 Promise，resolves 是 ArrayBuffer ( 有多少 bytes )
+          formData()  : 返回 Promise，resolves 是 formData ( 表單資料對應的的 Key 或 Value )
+          clone()     : 建立 Response 的複製物件
+          error()     : 返回 Response 的錯誤物件
+
+          --------------------------------------------
+          Fetch 搭配 async、await、promise.all
+          因為 fetch 的特性，可以改成 async 和 await 的寫法，執行後也就能按照我們要的順序進行。
+          ************************
+
+        fetch('https://httpbin.org/status/500', {
+        }).then((response) => {
+        if(response.status !== 200)       //在 Fetch 中，請求失敗時不會有像 $.ajax 中有 error 可以直接捕捉，
+        throw new Error(response.status)  //取而代之的是要以 response 的 status 的屬性值判斷，
+        return response.json()            //當 status 的值不等於 200 時，將在 .then 中使用 throw 創建一個錯誤，
+        }).then((myJson) => {             //並由 .catch 接收錯誤內容處理
+        console.log(myJson)
+        }).catch((error) => {
+        console.log(`錯誤代碼為${error}`)
+        })
+        */
+
+// Use fetch to call the following api: https://swapi.co/api/films/
+// You need to check that the response it's ok
+// Then convert the response from JSON string object to a JavaScript one
+// Finally show the following values for each film you get back:
+// title: %filmTitle%
+// episode_id: %filmID%
+// release_date: %filmReleasedDate%
+
+        window.onload = function(){
+        const apiURL = 'https://swapi.co/api/films/';
+
+        fetch(apiURL)
+        .then(function(response) {
+          if(response.status != 200){
+            console.log('response error');
+          }else{
+            console.log(('reponse ok'));
+          };
+            return response.json();
+        })
+        .then(function(data) {
+        const show = data['results'];
+        let filmTitle = "", filmID = "", filmReleasedDate = "", results = "";
+        const div = document.getElementById('jsonresponse');
+        const p = document.createElement('p');
+        for (let i =0; i<show.length; i++){
+         filmTitle = show[i].title;
+         filmID = show[i].episode_id;
+         filmReleasedDate = show[i].release_date;
+        results = `title: ${filmTitle}, episode_id: ${filmID}, release_date: ${filmReleasedDate}`;
+        console.log(results);
+        
+          p.innerHTML = i+1 + " : " + results;
+          div.appendChild(p.cloneNode(true)); 
+
+        } 
+
+    
+    
+  });
+
+
+
+      }   
+  </script>
+</head>
+<body>
+  <div id="jsonresponse"></div>
+  <img class = "newImg"></img>
+</body>
+</html>

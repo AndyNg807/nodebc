@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Form Properties</title>
+  <script>
+// Select the form element using any of the JavaScript selectors
+// Show the inputs values (same as previous exercise) when the user submits the form
+// You'll have to prevent the form default behaviour
+// Also, you can use the previous code as starting point
+// You need to handle the submit event and not the input type submit click event (just in case!)
+      window.onload = function(){
+        const forms = document.querySelector('form');
+        const username = forms.elements[0];
+        console.log(username);
+        const pass = forms.elements[1];
+        console.log(pass);
+        username.value = "morty";
+        pass.value = "12345"
+
+        forms.onsubmit = function(event){
+            alert(`username : ${username.value} and password : ${pass.value}`);
+            event.preventDefault();
+        };
+
+       
+
+
+
+      }
+  </script>
+</head>
+<body>
+  <form action="save_user.html" method="post" enctype="application/x-www-form-urlencoded" name="login">
+    <input type="text" id="username" name="username" />
+    <input type="password" id="pass" name="pass" />
+    <input type="submit" name="submit" value="Send" />
+  </form>
+  <div></div>
+</body>
+</html>
